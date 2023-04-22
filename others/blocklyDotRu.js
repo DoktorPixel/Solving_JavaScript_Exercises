@@ -9,7 +9,7 @@ multiply(7);
 console.log(result[0]); //7
 console.log(result[1]); //49
 console.log(result[2]); //343
-
+//const multiply = function (b) {...}
 const multiply = (b) => {
   let x = b ** 2;
   let y = b ** 3;
@@ -52,4 +52,31 @@ if (lastDigit === 1) {
   yearsOrNot = "лет";
 }
 
-alert("Тебе сейчас " + age + " " + yearsOrNot + ".");
+// // // 5)
+let number;
+while (true) {
+  number = Math.round(Number(prompt("Введите число")));
+  if (!Number.isNaN(number) && number !== null && number !== "") {
+    break;
+  }
+  alert("Это не число! Попробуйте еще раз.");
+}
+if (number > 0) {
+  number *= 2;
+} else {
+  number /= 2;
+}
+console.log(number);
+
+// // // 6)
+let a = Number(prompt("Введите коэффициент a"));
+let b = Number(prompt("Введите коэффициент b"));
+let c = Number(prompt("Введите коэффициент c"));
+
+let discriminant = b * b - 4 * a * c; // вычисляем дискриминант квадратного уравнения по формуле D = b^2 - 4ac
+
+if (discriminant >= 0) {
+  console.log("Уравнение имеет решение");
+} else {
+  console.log("Уравнение не имеет решения");
+}
