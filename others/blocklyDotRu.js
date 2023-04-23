@@ -80,3 +80,84 @@ if (discriminant >= 0) {
 } else {
   console.log("Уравнение не имеет решения");
 }
+
+// // // 7)
+
+function multiply(a, b) {
+  let range = [];
+  for (let i = a; i <= b; i += 1) {
+    if (i % 2 === 0) {
+      range.push(i);
+    }
+  }
+  return range;
+}
+console.log(multiply(10, 20)); //multiply(10, 20)
+
+// // // 8) Создай функцию, которая принимает произвольное целое число и возвращает сумму его цифр
+function sumDigits(number) {
+  let sum = 0;
+  while (number > 0) {
+    sum += number % 10;
+    number = Math.floor(number / 10);
+  }
+  return sum;
+}
+console.log(sumDigits(123)); // 6
+console.log(sumDigits(9876)); // 30
+console.log(sumDigits(444)); // 12
+
+// С использованием метода reduce():
+function sumDigits(number) {
+  return number
+    .toString()
+    .split("")
+    .reduce(function (acc, digit) {
+      return acc + parseInt(digit);
+    }, 0);
+}
+
+// С использованием метода map() и метода reduce():
+function sumDigits(number) {
+  return number
+    .toString()
+    .split("")
+    .map(function (digit) {
+      return parseInt(digit);
+    })
+    .reduce(function (acc, digit) {
+      return acc + digit;
+    });
+}
+
+// С использованием рекурсии:
+function sumDigits(number) {
+  if (number < 10) {
+    return number;
+  }
+  return (number % 10) + sumDigits(Math.floor(number / 10));
+}
+
+// // // 9) сравнение колличества цифр
+function compareLength(a, b) {
+  let one = a.toString();
+  let two = b.toString();
+  if (one.length === two.length) {
+    return true;
+  }
+  return false;
+}
+console.log(compareLength(123, 345)); //true
+
+//
+function compareLength(a, b) {
+    return a.toString().length === b.toString().length;
+  }
+  console.log(compareLength(123, 345)); //true
+  
+  //неявное приведение типов к строкам
+  function compareLength(a, b) {
+    return `${a}`.length === `${b}`.length;
+  }
+  console.log(compareLength(123, 345));//true
+  
