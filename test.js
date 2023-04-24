@@ -1,9 +1,12 @@
-function compareLength(a, b) {
-  let one = a.toString();
-  let two = b.toString();
-  if (one.length === two.length) {
-    return true;
-  }
-  return false;
+function fakeBin(x) {
+  let y = x.split("").map(function (digit) {
+    if (digit < 5) {
+      digit = 0;
+    } else {
+      digit = 1;
+    }
+    return digit;
+  });
+  return Number(y.join(""));
 }
-console.log(compareLength(123, 345));
+console.log(fakeBin("45385593107843568")); // 1011110001100111

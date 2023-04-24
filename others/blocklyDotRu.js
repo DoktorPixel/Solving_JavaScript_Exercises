@@ -151,13 +151,44 @@ console.log(compareLength(123, 345)); //true
 
 //
 function compareLength(a, b) {
-    return a.toString().length === b.toString().length;
+  return a.toString().length === b.toString().length;
+}
+console.log(compareLength(123, 345)); //true
+
+//неявное приведение типов к строкам
+function compareLength(a, b) {
+  return `${a}`.length === `${b}`.length;
+}
+console.log(compareLength(123, 345)); //true
+
+// // // 10) Создайте Рекурсивную функцию (процедуру). принимает в качестве параметра целое положительное число n, и выводит на экран все числа от 1 до n. (Проверка ввод: 5 вывод: 1, 2, 3, 4, 5)
+function printNumbers(n) {
+  if (n <= 0) {
+    return;
+  } else {
+    printNumbers(n - 1);
+    console.log(n);
   }
-  console.log(compareLength(123, 345)); //true
-  
-  //неявное приведение типов к строкам
-  function compareLength(a, b) {
-    return `${a}`.length === `${b}`.length;
+}
+printNumbers(5); // выведет: 1, 2, 3, 4, 5
+//
+function printNumbers(n) {
+  if (n <= 0) {
+    return;
   }
-  console.log(compareLength(123, 345));//true
+  console.log(n); // сначала выводим значение n в консоль
+  printNumbers(n - 1); // затем вызываем рекурсивно функцию с аргументом n-1
+}
+printNumbers(5); // выведет наоборот: 5, 4, 3, 2, 1
+
+// // // 11)Создайте рекурсивную функцию, которая принимает B качестве параметра целое положительное число n и возвращает сумму всех чисел от 1 до n (Проверка ввод: 7 вывод: сумма чисел от 1 до 7 равна 28)
+
+function sumNum(n) {
+  let sum = 0
+  if (n <= 0) {
+    return;
+  }
+sum +=n
+sumNum (n-1)
   
+}
