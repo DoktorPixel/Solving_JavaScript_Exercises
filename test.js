@@ -1,12 +1,37 @@
-function fakeBin(x) {
-  let y = x.split("").map(function (digit) {
-    if (digit < 5) {
-      digit = 0;
-    } else {
-      digit = 1;
-    }
-    return digit;
-  });
-  return Number(y.join(""));
+class Animal {
+  constructor() {
+    this.gender = "male";
+  }
+
+  arrow = () => console.log("Animal arrow this: ", this);
+
+  declaration() {
+    console.log("Animal declaration this", this);
+  }
 }
-console.log(fakeBin("45385593107843568")); // 1011110001100111
+
+class Monkey extends Animal {
+  constructor({ born }) {
+    super();
+    this.born = born;
+  }
+
+  getBornDate() {
+    const yyyy = this.born.getFullYear();
+    let mm = this.born.getMonth() + 1; // Months start at 0!
+    let dd = this.born.getDate();
+
+    if (dd < 10) dd = "0" + dd;
+    if (mm < 10) mm = "0" + mm;
+
+    return dd + "/" + mm + "/" + yyyy;
+  }
+}
+
+const monkey = new Monkey({ born: new Date() });
+
+monkey.arrow();
+monkey.declaration();
+
+const born_date = monkey.getBornDate();
+console.log("born_date", born_date);

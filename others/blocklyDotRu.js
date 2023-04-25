@@ -184,11 +184,67 @@ printNumbers(5); // выведет наоборот: 5, 4, 3, 2, 1
 // // // 11)Создайте рекурсивную функцию, которая принимает B качестве параметра целое положительное число n и возвращает сумму всех чисел от 1 до n (Проверка ввод: 7 вывод: сумма чисел от 1 до 7 равна 28)
 
 function sumNum(n) {
-  let sum = 0
+  let sum = 0;
   if (n <= 0) {
     return;
   }
-sum +=n
-sumNum (n-1)
-  
+  sum += n;
+  sumNum(n - 1);
 }
+
+// // // 12) напиши функцию, которая проверяет является ли слово анаграммой
+function isAnagram(word1, word2) {
+  // Удаляем пробелы и приводим слова к нижнему регистру
+  word1 = word1.replace(/\s/g, "").toLowerCase();
+  word2 = word2.replace(/\s/g, "").toLowerCase();
+  // Сравниваем длины слов
+  if (word1.length !== word2.length) {
+    return false;
+  }
+  // Сортируем буквы в словах и сравниваем их
+  const sortedWord1 = word1.split("").sort().join("");
+  const sortedWord2 = word2.split("").sort().join("");
+  return sortedWord1 === sortedWord2;
+}
+// Пример использования:
+const word1 = "listen";
+const word2 = "silent";
+const isAnagram = isAnagram(word1, word2); // true
+
+//
+function isAnagram(word1, word2) {
+  // Удаляем пробелы и приводим слова к нижнему регистру
+  word1 = word1.replace(" ", "").toLowerCase();
+  word2 = word2.replace(" ", "").toLowerCase();
+  // Сравниваем длины слов
+  if (word1.length !== word2.length) {
+    return false;
+  }
+  // Сортируем буквы в словах и сравниваем их
+  const sortedWord1 = word1.split("").sort().join("");
+  const sortedWord2 = word2.split("").sort().join("");
+  return sortedWord1 === sortedWord2;
+}
+
+// // // 13) Нужно написать функцию, принимающую строку в качестве аргумента и возвращающую количество гласных, которые содержатся в строке. Гласными являются «a», «e», «i», «o», «u».
+function countVowels(str) {
+  // Приводим строку к нижнему регистру, чтобы учесть и заглавные гласные буквы
+  str = str.toLowerCase();
+  // Создаем массив из гласных букв
+  const vowels = ["a", "e", "i", "o", "u"];
+  // Инициализируем счетчик гласных букв
+  let count = 0;
+  // Проходимся по каждому символу в строке
+  for (let i = 0; i < str.length; i++) {
+    // Если символ является гласной буквой, увеличиваем счетчик
+    if (vowels.includes(str[i])) {
+      count++;
+    }
+  }
+  // Возвращаем количество гласных букв в строке
+  return count;
+}
+
+// Пример использования:
+const str = "Hello World";
+const numVowels = countVowels(str); // 3
