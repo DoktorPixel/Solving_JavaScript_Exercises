@@ -154,3 +154,56 @@ console.log(rowSumOddNumbers(42)); // Output: 74088
 function rowSumOddNumbers(n) {
 	return n*n*n
 }
+
+// // // 5)
+// В данной задаче мы имеем декартову плоскость с целочисленными координатами x и y, а также три функции: f, g и h. Функции определены следующим образом:
+// f(x, y) = min(x, y) - возвращает минимальное значение из x и y.
+// g(x, y) = max(x, y) - возвращает максимальное значение из x и y.
+// h(x, y) = x + y - возвращает сумму x и y.
+// Задача состоит в вычислении суммы значений f(x, y), g(x, y) и h(x, y) для всех целочисленных x и y в заданном диапазоне D: 1 <= x <= n и 1 <= y <= n, где n - заданное целое число (n >= 1).
+
+// Функция для вычисления суммы значений f(x, y)
+function sumin(n) {
+  let sum = 0;
+  for (let x = 1; x <= n; x++) {
+    for (let y = 1; y <= n; y++) {
+      sum += Math.min(x, y);
+    }
+  }
+  return sum;
+}
+
+// Функция для вычисления суммы значений g(x, y)
+function sumax(n) {
+  let sum = 0;
+  for (let x = 1; x <= n; x++) {
+    for (let y = 1; y <= n; y++) {
+      sum += Math.max(x, y);
+    }
+  }
+  return sum;
+}
+
+// Функция для вычисления суммы значений h(x, y)
+function sumsum(n) {
+  let sum = 0;
+  for (let x = 1; x <= n; x++) {
+    for (let y = 1; y <= n; y++) {
+      sum += x + y;
+    }
+  }
+  return sum;
+}
+
+console.log(sumin(6)); // Output: 91
+console.log(sumax(6)); // Output: 161
+console.log(sumsum(6)); // Output: 252
+
+console.log(sumin(45)); // Output: 31395
+console.log(sumax(45)); // Output: 61755
+console.log(sumsum(45)); // Output: 93150
+
+console.log(sumin(999)); // Output: 332833500
+console.log(sumax(999)); // Output: 665167500
+console.log(sumsum(999)); // Output: 998001000
+
