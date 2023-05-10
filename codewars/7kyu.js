@@ -152,7 +152,7 @@ console.log(rowSumOddNumbers(2)); // Output: 8
 console.log(rowSumOddNumbers(42)); // Output: 74088
 //тоже самое
 function rowSumOddNumbers(n) {
-	return n*n*n
+  return n * n * n;
 }
 
 // // // 5)
@@ -207,3 +207,38 @@ console.log(sumin(999)); // Output: 332833500
 console.log(sumax(999)); // Output: 665167500
 console.log(sumsum(999)); // Output: 998001000
 
+// // // 6)
+// Given a time in AM/PM format as a string, convert it to military (24-hour) time as a string.
+// Midnight is 12:00:00AM on a 12-hour clock, and 00:00:00 on a 24-hour clock. Noon is 12:00:00PM on a 12-hour clock, and 12:00:00 on a 24-hour clock
+// Sample Input: 07:05:45PM Sample Output: 19:05:45
+
+function convertTime(time) {
+  let militaryTime = '';
+  const isAM = time.slice(-2) === 'AM';
+  console.log(isAM)  // false
+  let [hours, minutes, seconds] = time.slice(0, -2).split(':');
+  console.log(hours, minutes, seconds) //07 05 45
+  // Шаг 1: Проверяем, является ли время AM или PM
+  if (isAM) {
+    // Шаг 2: Если время AM и часы равны 12, преобразуем их в 00
+    if (hours === '12') {
+      hours = '00';
+    }
+  } else {
+    // Шаг 3: Если время PM и часы не равны 12, добавляем 12 к часам
+    if (hours !== '12') {
+      hours = String(Number(hours) + 12);
+    }
+  }
+  
+  // Шаг 4: Собираем преобразованные значения часов, минут и секунд в новую строку
+  militaryTime = `${hours}:${minutes}:${seconds}`;
+  
+  // Шаг 5: Возвращаем время в формате 24-часового времени
+  return militaryTime;
+}
+
+// Пример использования
+const inputTime = '07:05:45PM';
+const militaryTime = convertTime(inputTime);
+console.log(militaryTime); // Output: 19:05:45
